@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "lib": [
       "dom",
@@ -20,7 +21,11 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "exclue": [
+    "node_modules"
+  ],
   "include": [
-    "src"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }
