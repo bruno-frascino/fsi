@@ -1,0 +1,56 @@
+.tcb-body {
+  background-color: #f9f9f9;
+  height: 100%;
+  min-height: 100%;
+  padding-top: 15px;
+}
+
+.tcb-form-row {
+  width: 100%;
+  height: 30px;
+  vertical-align: middle;
+  padding-left: 10px;
+  line-height: 30px;
+}
+
+.tcb-form-submit-container {
+  padding-top: 20px;
+}
+
+.tcb-form-submit {
+  border-radius: 4px;
+  width: 90px;
+  height: 30px;
+  color:#fff;
+  background-color: #fd8016;
+  border: 0;
+  font-family: Montserrat;
+  font-weight: 700;
+  box-shadow: 6px 6px 0 0 #363435;
+}
+
+main > form > div input {
+  width: 77%;
+  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    sans-serif;
+}
+
+main > form > div label {
+  display: inline-block;
+  width: 20%;
+}
+
+.alert-box {
+  position: relative;
+  top: 20px;
+  left: 10px;
+  width: 400px;
+  height: 60px;
+  background-color: beige;
+  display: inline-block;
+  text-align: center;
+  border-radius: 8px;
+  line-height: 60px;
+  box-shadow: 10px 5px 5px gray;
+}
