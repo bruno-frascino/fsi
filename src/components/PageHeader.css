@@ -1,0 +1,12 @@
+.App-header {
+  background-color: #555e2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e7bb01;
+}
+
+.App-header h1 {
+  margin-left: 20px;
+  font-size: calc(15px + 2vmin);
+}
