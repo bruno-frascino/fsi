@@ -24,7 +24,11 @@ const TrayCallbackTemplate: React.FC<TrayCallbackTemplateProps> = ({storeCode, u
   return (    
     <div className='body'>
       <div className='centered'>
-        <h2>FS Description</h2>
+        <main>
+          <section>
+            A Farmer Shop, um marketplace dedicado ao mundo country, oferece a oportunidade de integrar facilmente sua loja na plataforma Tray. Faça isso utilizando a robusta API da Farmer Shop.
+          </section>
+        </main>
       </div>
       <div className='g-row centered'>
         <button className='g-button' type='button' onClick={handleInstall}>Instale agora</button>

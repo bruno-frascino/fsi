@@ -6,6 +6,7 @@
 }
 
 .g-row {
+  padding-top: 10px;
   width: 100%;
   height: 40px;
   vertical-align: middle;
@@ -22,12 +23,12 @@
 
 .g-button {
   border-radius: 4px;
-  width: 90px;
-  height: 30px;
+  width: 95px;
+  height: 35px;
   color:#fff;
   background-color: #fd8016;
   border: 0;
   font-family: Montserrat;
-  font-weight: 700;
+  font-weight: 900;
   box-shadow: 6px 6px 0 0 #363435;
 }
