@@ -1,20 +1,12 @@
 export interface Integration {
-  // id: number;
+  id?: number;
   sellerName?: string;
-  sellerSId?: number;
   sellerSKey?: string;
   sellerSSecret?: string;
-  sellerSAccessToken?: string;
-  sellerSRefreshToken?: string;
-  sellerSAccessExpirationDate?: number; // stored in Unix time
-  sellerSRefreshExpirationDate?: number;
   sellerTStoreCode: string;
   sellerTStoreAccessCode?: string;
-  sellerTStoreUrl?: string;
-  sellerTAccessToken?: string;
-  sellerTRefreshToken?: string;
-  sellerTAccessExpirationDate?: number;
-  sellerTRefreshExpirationDate?: number;
+  sellerTStoreAdminUser?: string;
+  sellerTStorePath?: string;
   createDate?: Date;
   active: number;
 }
