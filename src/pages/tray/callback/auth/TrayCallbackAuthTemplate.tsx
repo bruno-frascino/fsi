@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import './TrayCallbackAuthTemplate.css';
-import { finaliseIntegration } from 'src/util/api';
+import { updateIntegration } from 'src/util/api';
 import { Integration } from 'src/model/models';
 
 interface TrayCallbackAuthTemplateProps {
     apiUrl: string;
     authCode: string;
     storeCode: string;
+    admUser: string;
+    integration?: Integration;
 }
 
-const TrayCallbackAuthTemplate: React.FC<TrayCallbackAuthTemplateProps> = ({storeCode, authCode, apiUrl}) => {
+const TrayCallbackAuthTemplate: React.FC<TrayCallbackAuthTemplateProps> = ({storeCode, authCode, apiUrl, admUser, integration}) => {
 
   const [sellerName, setSellerName] = useState<string>('');
-  const [sellerCode, setSellerCode] = useState<string>('');
+  // const [sellerCode, setSellerCode] = useState<string>('');
   const [sellerKey, setSellerKey] = useState<string>('');
   const [displayMessage, setDisplayMessage] = useState<boolean>(false);
   const [sellerSecret, setSellerSecret] = useState<string>('');
@@ -23,9 +25,9 @@ const TrayCallbackAuthTemplate: React.FC<TrayCallbackAuthTemplateProps> = ({stor
     setSellerName(event.target.value)
   }
 
-  const sellerCodeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSellerCode(event.target.value)
-  }
+  // const sellerCodeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSellerCode(event.target.value)
+  // }
 
   const sellerKeyHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSellerKey(event.target.value)
@@ -41,13 +43,13 @@ const TrayCallbackAuthTemplate: React.FC<TrayCallbackAuthTemplateProps> = ({stor
       sellerSKey: sellerKey,
       sellerSSecret: sellerSecret,
       sellerName,
-      // ?: sellerCode, //
       sellerTStoreCode: storeCode,
       sellerTStoreAccessCode: authCode,
-      sellerTStoreUrl: apiUrl,
+      sellerTStorePath: apiUrl,
+      sellerTStoreAdminUser: admUser,
       active: 1,
     }
-    const res = await finaliseIntegration(integration);
+    const res = await updateIntegration(integration);
     if(res){
       setDisplayMessage(true);
       setResponseMessage('Integração realizada com sucesso!')
@@ -55,20 +57,32 @@ const TrayCallbackAuthTemplate: React.FC<TrayCallbackAuthTemplateProps> = ({stor
     // TODO Where to redirect it to?
   };
 
+  if (integration) {
+    setSellerName(integration.sellerName || '');
+    setSellerKey(integration.sellerSKey || '');
+    setSellerSecret(integration.sellerSSecret || '');
+  }
+
   return (
     <main className='tcb-body'>
       <section>
-        <h2>Finalise a configuração de sua integração de sua loja da Tray com sua loja da Farmer Shop</h2>
+        {integration && (
+          <h2>Dados da integração de sua loja Farmer Shop</h2>
+        )}
+
+        {!integration && (
+          <h2>Entre com os seguintes dados de sua loja da Farmer Shop</h2>
+        )}
       </section>
       <form onSubmit={handleSubmit}>
         <div className='tcb-form-row'>
           <label htmlFor="sellerName">Nome da Loja: </label>
           <input id="sellerName" name="sellerName" type="text" value={sellerName} onChange={sellerNameHandler} placeholder="Loja" maxLength={60} required aria-required/>
         </div>
-        <div className='tcb-form-row'>
+        {/* <div className='tcb-form-row'>
           <label htmlFor="sellerCode">Código da Loja: </label>
           <input id="sellerCode" name="sellerCode" type="text" value={sellerCode} onChange={sellerCodeHandler} placeholder="Código" maxLength={10} required aria-required/>
-        </div>
+        </div> */}
         <div className='tcb-form-row'>
           <label htmlFor="sellerKey">Key: </label>
           <input id="sellerKey" name="sellerKey" type="text" value={sellerKey} onChange={sellerKeyHandler} placeholder="Key" maxLength={60} required aria-required/>

@@ -17,12 +17,21 @@ export async function initiateIntegration({storeCode}: initiateIntegrationParams
   }
 }
 
-export async function finaliseIntegration(integration: Integration): Promise<any> {
+export async function updateIntegration(integration: Integration): Promise<any> {
   try {
     const response = await axios.put(`${apiUrl}/integration`, integration);
     return response.data
   } catch(err) {
-    log.info(`Error trying to finalise Integration for store: ${integration.sellerTStoreCode} with error: ${err}`);
+    log.info(`Error trying to update Integration for store: ${integration.sellerTStoreCode} with error: ${err}`);
+  }
+}
+
+export async function getIntegrationByStoreCode(storeCode: string): Promise<any> {
+  try {
+    const response = await axios.get(`${apiUrl}/integration?storeCode=${storeCode}`);
+    return response.data
+  } catch(err) {
+    log.info(`Error trying to get Integration for store: ${storeCode} with error: ${err}`);
   }
 }
 
